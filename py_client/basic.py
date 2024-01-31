@@ -8,7 +8,7 @@ import requests
 endpoint = "http://127.0.0.1:8000/api/"
 
 # api -> 
-get_response = requests.post(endpoint,json={"title":"hello world"}) # http get req 
+get_response = requests.post(endpoint,json={"title":"abc123","content":None,"price":"22"}) # http get req 
 # print(get_response.headers)
 # print(get_response.text)
 

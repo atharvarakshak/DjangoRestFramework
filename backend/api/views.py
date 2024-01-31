@@ -20,7 +20,7 @@ def api_home(request,*args,**kwargs):
     # if request.method != "POST":
     #     return Response({"detail":"GET not allowed"},status=405)
 
-    data  = request.data
+    # data  = request.data
     
     # instance = Product.objects.all().order_by("?").first()
     # data={}
@@ -32,7 +32,12 @@ def api_home(request,*args,**kwargs):
         
     #     # data = model_to_dict(instance,fields=['id','title','price','sale_price'])
     #     data = ProductSerializer(instance).data
-    return Response(data)
+    serializer = ProductSerializer(data=request.data)
+    if serializer.is_valid(raise_exception=True):
+        print(serializer.data)
+        data = serializer.data
+        return Response(data)
+    return Response({"invalid":"not good data"},status=400)
 
         # model instance (model_data)
         # turn a python dict
